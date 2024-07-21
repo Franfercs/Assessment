@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Key } from 'react';
 
-const API_URL = 'http://www.omdbapi.com/';
+const API_URL = 'https://www.omdbapi.com/';
 const API_KEY = process.env.REACT_APP_API_KEY; // Make sure to add your API key in your .env file
 
 if (!API_KEY) {
