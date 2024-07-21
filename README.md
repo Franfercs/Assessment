@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+# Prueba Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Indicaciones
 
-## Available Scripts
+Preparar un proyecto de react o react native, en caso de usar react native utilizar CLI. En lo posible utilizando Typescript y lo subirlo a un repositorio de Github/Gitlab/Bitbucket/etc, una vez termine el proyecto (o antes, si te parece) me puedes pasar el link y me das acceso en caso de que sea privado para poder realizar la evaluación.
 
-In the project directory, you can run:
+Básicamente estamos hablando de una aplicación que lista películas y el detalle de cada una de ellas. El diseño de la aplicación no es objeto de evaluación, pero se puede utilizar libs de diseño. Ej. (MUI, Paper, tailwind).
 
-### `npm start`
+La api que usaremos para obtener los datos de las películas es la siguiente: http://www.omdbapi.com/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Los requerimientos para la aplicación son:
+Buscador;
+La aplicación debe contar con un buscador y un filtro en el cual se consulte al servidor buscando por:
+- Título
+- Año
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Listado;
+Cada item del listado debe contener los siguientes datos:
+- Imagen
+- Titulo
+- Rating
+- Descripción corta
 
-### `npm test`
+Pantalla de la película;
+Al tocar un item del listado se debe navegar a la pantalla donde se pueden ver mas detalles de la película, tales como:
+- Imagen/es
+- Nombre
+- Rating
+- Descripción larga
+- Director
+- Listado de actores
+- Otro dato que se crea conveniente
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Se puede utilizar gestores de estado (redux, zustand, MobX, etc).
 
-### `npm run build`
+Se tendrá en cuenta para la evaluación:
+- Buenas prácticas
+- Técnicas de mejoras de rendimiento
+- Typescript
+- Patrones de diseño / Arquitectura
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Requerimientos 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- NodeJS >= 16
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Desarrollo en entorno local
 
-### `npm run eject`
+Para levantar el proyecto en entorno de desarrollo, siga los siguientes pasos:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clonar este repositorio: `git clone git@github.com:Franfercs/Assessment.git`
+2. Instalar las dependencias del proyecto: `npm i`
+3. Crear un archivo `.env` con las siguientes variables de entorno:
+    
+    ```bash
+    REACT_APP_API_KEY=<OMDb API KEY>
+    ```
+4. Correr la aplicación: `npm run start`
