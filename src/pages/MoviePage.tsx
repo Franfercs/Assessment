@@ -63,7 +63,7 @@ const MoviePage: React.FC = () => {
                 <h1 onClick={() => navigate('/')} className='text-white cursor-pointer text-xl mt-1'>{`< Back`}</h1>
             </div>
             <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start px-8 sm:px-16 py-8 ">
-                <img src={movie.Poster !== 'N/A' ? movie.Poster : Test} alt={movie.Title} className="w-[300px] sm:w-[480px] h-[400px] sm:h-[600px] rounded-lg shadow-md" />
+                <img src={movie.Poster !== 'N/A' ? movie.Poster : Test} alt={movie.Title} className="w-[300px] sm:w-[400px] h-[400px] sm:h-[600px] rounded-lg shadow-md" />
                 <div className="sm:ml-8 mt-4 sm:mt-0 mx-auto">
                     <h1 className="text-3xl font-bold">{movie.Title} ({movie.Year})</h1>
                     <p className="text-lg mt-2 sm:mt-0"><strong>Genre:</strong> {movie.Genre}</p>
