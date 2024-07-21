@@ -2,7 +2,7 @@
   "name": "assessment",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://franfercs.github.io/assessment",
+  "homepage": "https://franfercs.github.io/Assessment",
   "dependencies": {
     "@headlessui/react": "^2.1.2",
     "@reduxjs/toolkit": "^2.2.6",
