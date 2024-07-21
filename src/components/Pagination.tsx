@@ -28,8 +28,8 @@ const Pagination: React.FC<PaginationProps> = ({ moviesPerPage, totalMovies, pag
             ));
         }
 
-        const startPage = Math.max(1, currentPage - 2);
-        const endPage = Math.min(totalPages, currentPage + 2);
+        const startPage = Math.max(1, window.innerWidth > 640 ? currentPage - 2 : currentPage - 1);
+        const endPage = Math.min(totalPages, window.innerWidth > 640 ? currentPage + 2 : currentPage + 1);
         const pages: number[] = [];
 
         for (let i = startPage; i <= endPage; i++) {
@@ -48,12 +48,12 @@ const Pagination: React.FC<PaginationProps> = ({ moviesPerPage, totalMovies, pag
             pages.push(totalPages);
         }
 
-        return pages.map((number) => {
+        return pages.map((number, idx) => {
             if (number === -1) {
-                return <li key={number}><span>...</span></li>;
+                return <li key={idx}><span>...</span></li>;
             }
             return (
-                <li key={number} className={`${number === currentPage ? 'text-[#0ea5e9]' : ''}`}>
+                <li key={idx} className={`${number === currentPage ? 'text-[#0ea5e9]' : ''}`}>
                     <button onClick={() => paginate(number.toString())}>
                         {number}
                     </button>
@@ -64,11 +64,11 @@ const Pagination: React.FC<PaginationProps> = ({ moviesPerPage, totalMovies, pag
 
     return (
         <nav>
-            <ul className="flex gap-6 justify-center mt-6">
+            {totalPages > 1 && <ul className="flex gap-3 sm:gap-6 justify-center mt-6">
                 {currentPage > 1 && (
                     <li>
                         <button onClick={() => paginate((currentPage - 1).toString())} className="page-link">
-                            Previous
+                            Prev
                         </button>
                     </li>
                 )}
@@ -80,7 +80,7 @@ const Pagination: React.FC<PaginationProps> = ({ moviesPerPage, totalMovies, pag
                         </button>
                     </li>
                 )}
-            </ul>
+            </ul>}
         </nav>
     );
 };

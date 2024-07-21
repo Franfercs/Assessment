@@ -16,7 +16,7 @@ const MovieList: React.FC = () => {
         dispatch(setLoading());
         dispatch(setError(null));
         try {
-            const results = await getAll(query, pageNumber);
+            const results = await getAll(query, pageNumber, '');
             dispatch(setSearchResults(results.Search));
         } catch (error) {
             if (error instanceof Error)
@@ -37,9 +37,9 @@ const MovieList: React.FC = () => {
     }
 
     return (
-        <div className='px-20 mt-4 pb-10'>
+        <div className='px-6 sm:px-20 mt-4 pb-4 sm:pb-10'>
             {query && <p>Results for: {query} {`(${count})`}</p>}
-            <div className='grid sm:grid-cols-5 grid-cols-3 gap-6 mt-6'>
+            <div className='grid sm:grid-cols-5 grid-cols-2 gap-2 sm:gap-6 mt-6'>
                 {results.map(movie => (
                     <MovieCard title={movie.Title} poster={movie.Poster} id={movie.imdbID} key={movie.imdbID} />
                 ))}

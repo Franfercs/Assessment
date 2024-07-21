@@ -1,25 +1,39 @@
 // src/features/search/SearchBar.tsx
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSearchQuery, setLoading, setSearchResults, setCount, setError } from '../features/searchSlice';
 import { getAll } from '../api';
+import { RootState } from '../store/store';
 
-const SearchBar: React.FC = () => {
+interface SearhBarComponent {
+    closeModal: () => void;
+}
+
+const SearchBar: React.FC<SearhBarComponent> = ({ closeModal }) => {
     const [input, setInput] = useState('');
     const dispatch = useDispatch();
+    const isMobile = window.innerWidth < 640;
+    const { year } = useSelector((state: RootState) => state.search);
 
     const handleSearch = async () => {
         dispatch(setLoading());
         dispatch(setError(null));
         try {
-            const results = await getAll(input, '1');
+            const results = await getAll(input, '1', year);
             dispatch(setSearchQuery(input));
             dispatch(setCount(results.totalResults));
             dispatch(setSearchResults(results.Search));
         } catch (error) {
-            if (error instanceof Error)
+            if (error instanceof Error) {
                 dispatch(setError(error.message));
+                dispatch(setSearchQuery(input));
+                dispatch(setCount('0'));
+                dispatch(setSearchResults([]));
+            }
+
         }
+        if (window.innerWidth <= 640)
+            closeModal();
     };
 
     return (

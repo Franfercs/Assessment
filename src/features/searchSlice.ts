@@ -15,6 +15,7 @@ interface SearchState {
     results: Movie[];
     count: string,
     page: string,
+    year: string,
     isLoading: boolean;
     error: string | null;
 }
@@ -24,6 +25,7 @@ const initialState: SearchState = {
     results: [],
     count: '0',
     page: '1',
+    year: '',
     isLoading: false,
     error: null,
 };
@@ -43,7 +45,10 @@ const searchSlice = createSlice({
             state.count = action.payload;
         },
         setPage(state, action: PayloadAction<string>) {
-            state.count = action.payload;
+            state.page = action.payload;
+        },
+        setYear(state, action: PayloadAction<string>) {
+            state.year = action.payload;
         },
         setLoading(state) {
             state.isLoading = true;
@@ -58,6 +63,6 @@ const searchSlice = createSlice({
     },
 });
 
-export const { setSearchQuery, setSearchResults, setCount, setLoading, setError, clearError } = searchSlice.actions;
+export const { setSearchQuery, setSearchResults, setCount, setPage, setYear, setLoading, setError, clearError } = searchSlice.actions;
 
 export default searchSlice.reducer;

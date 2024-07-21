@@ -48,12 +48,13 @@ interface GetMoviesResponse {
     Response: string;
 }
 
-export const getAll = async (query: string, page: string): Promise<GetMoviesResponse> => {
+export const getAll = async (query: string, page: string, year: string): Promise<GetMoviesResponse> => {
     try {
 
         const response = await axios.get<GetMoviesResponse>(API_URL, {
             params: {
                 s: query,
+                y: year,
                 apikey: API_KEY,
                 page: page,
             },
